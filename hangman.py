@@ -87,18 +87,18 @@ def play_game():
     word=choose_word(word_list)
     guess_letters=[]
     incorrect_letters = 0
-    print("Welcome to hangingman game!")
-    print(f"The word has {len(word)} letters")
-    print(f"You have {max_incorrect_letters} incorrect guesses allowed")
+    print("             Welcome to hangingman game!")
+    print(f"1. The word has {len(word)} alphabtes")
+    print(f"2. You are allowed to make {max_incorrect_letters} incorrect guesses.")
         
     while incorrect_letters < max_incorrect_letters:
         print(display_hangingman(incorrect_letters))
         print("word: " + display_word(word, guess_letters))
-        print("guessed letters:")
+        print("guessed alphabets:", " ".join(guess_letters))
         print("incorrect guessses remaining: ", max_incorrect_letters - incorrect_letters)
         
         if all(letters in guess_letters for letters in word):
-            print(f"Congratulations! You have WON the game, the word:  {word}")
+            print(f"Congratulations! You have WON the game, the word: {word}")
             break
         
         guess = input("guess a letter: ").lower().strip()
@@ -111,10 +111,10 @@ def play_game():
         
         guess_letters.append(guess)
         if guess in word:
-            print(f"_ _ Good Guess _ _ '{guess} is in the word")
+            print(f"  _ _ Good Guess _ _ '{guess} is in the word")
         else:
             incorrect_letters += 1
-            print(f"_ _ BAD _ _ '{guess} is not in the word")
+            print(f"  _ _ BAD _ _ '{guess} is not in the word")
             
     else:
         print(display_hangingman(incorrect_letters))
@@ -123,5 +123,3 @@ def play_game():
        
 if __name__ == "__main__":
     play_game()        
-
-    
